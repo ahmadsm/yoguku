@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('access denied');
 
-require APPPATH.'/libraries/REST_Controller.php';
+//require APPPATH.'/libraries/REST_Controller.php';
 
 class MaterialRest extends CI_Controller {
 	function __construct() {
 		parent::__construct();
-		$this->load->config('rest');
+//		$this->load->config('rest');
 	}
 
 	function data() {

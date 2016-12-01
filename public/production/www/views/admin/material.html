@@ -1,0 +1,46 @@
+
+<form class="form-inline">
+    <div class="form-group">            
+        <div class="input-group">
+            <div class="input-group-addon">Search : </div>
+            <input type="text" class="form-control" ng-model="search" placeholder="Name Search">            
+
+        </div>
+    </div>
+
+</form>
+
+<br><br>
+
+<div class="panel panel-default">
+    <table class="table table-bordered panel-body">
+        <thead>
+            <tr class="success">
+                <th width="10">ID</th>
+                <th>Name</th>
+                <th>Qty</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in content| filter : search">
+                <td>{{ item.id}}</td>
+                <td>{{ item.nama}}</td>
+                <td>{{ item.total}} {{item.satuan}}</td>
+            </tr>
+        </tbody>
+    </table>    
+</div>
+
+
+<!--MODAL ADD DATA -->
+<!--<script type="text/ng-template" id="button-add-modal.html">       
+    <div class="modal-body" id="modal-body">
+
+    <h5 class="control-label" ><strong>Masukkan judul materi yang akan ditambahkan : </strong></h5>
+    <input class="form-control" type="text" id="inputSmall" ng-model="input.judul" placeholder="Judul materi .... ">        
+    </div>
+    <div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="submitAddData()"><i class="fa fa-plus"></i>&nbsp;Tambah</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Batal</button>
+    </div>
+</script>-->

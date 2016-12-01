@@ -1,0 +1,68 @@
+
+<div class="row">
+    <div class="col-lg-6">
+        <form class="form-inline">
+            <div class="form-group">            
+                <div class="input-group">
+                    <div class="input-group-addon">Search : </div>
+                    <input type="text" class="form-control" ng-model="search" placeholder="Name Search">            
+
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div class="col-lg-6 text-right">
+        <button class="btn btn-success" ng-click="NewRequestDemandModal()"><i class="fa fa-plus"></i> New Demand Request</button>
+    </div>
+</div>
+<br><br>
+
+<div class="panel panel-default">
+    <table class="table table-bordered panel-body">
+        <thead>
+            <tr class="success">
+                <th width="10">ID</th>
+                <th>Name</th>
+                <th>Qty</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in content | filter : search">
+                <td>{{ item.id}}</td>
+                <td>{{ item.nama}}</td>
+                <td>{{ item.total}} {{item.satuan}}</td>
+            </tr>
+        </tbody>
+    </table>    
+</div>
+
+
+<!--MODAL ADD DATA -->
+<script type="text/ng-template" id="button-new-request-modal.html">       
+    <div class="modal-header">                        
+    <h4 class="modal-title">New Request Form</h4>
+    </div>
+    <div class="modal-body" id="modal-body">
+    <div class="row">
+                            <div class="col-lg-6">
+                                <fieldset class="form-group">
+                                    <label class="form-label semibold" for="title">Title</label>
+                                    <input type="text" class="form-control demand_title"  placeholder="Request Title">                                    
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6">
+                                <fieldset class="form-group">
+                                    <label class="form-label" for="date">Request Date</label>
+                                    <div class="input-group date">
+                                        <input id="daterange3" type="text" class="form-control demand_request_date" >                                        
+                                    </div>
+                                </fieldset>
+                            </div>
+    </div>
+    </div>
+    <div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="submitAddData()"><i class="fa fa-plus"></i>&nbsp;Tambah</button>
+    <button class="btn btn-warning" type="button" ng-click="cancel()">Batal</button>
+    </div>
+</script>
