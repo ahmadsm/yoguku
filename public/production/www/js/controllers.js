@@ -211,6 +211,17 @@ controllers.controller('AdminDemandController', function (
         $scope, $localStorage, $state, $stateParams, $modal, $rootScope, md5,
         jwtHelper, AdminFactory, AdminTokenService, toastr, fileUpload, Upload) {
 
+    AdminFactory.GetDataMaterial().success(function (response) {
+        if (response != "") {            
+            $scope.content = response;
+        }
+    })
+    $scope.material_select = [];
+    
+    $scope.checknow = function(id){                
+        $scope.material_select.push(id);
+        console.log($scope.material_select);
+    }
 
     $scope.NewRequestDemandModal = function () {
         $scope.$modalInstance = $modal.open({
