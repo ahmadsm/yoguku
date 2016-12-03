@@ -212,15 +212,19 @@ controllers.controller('AdminDemandController', function (
         jwtHelper, AdminFactory, AdminTokenService, toastr, fileUpload, Upload) {
 
     AdminFactory.GetDataMaterial().success(function (response) {
-        if (response != "") {            
+        if (response != "") {
             $scope.content = response;
         }
     })
+
     $scope.material_select = [];
-    
-    $scope.checknow = function(id){                
-        $scope.material_select.push(id);
-        console.log($scope.material_select);
+
+    $scope.checknow = function (id) {
+        var data = {"id": id};
+        $scope.material_select.push(data);
+        var material = $scope.material_select;
+        console.log(JSON.stringify(material));
+
     }
 
     $scope.NewRequestDemandModal = function () {
@@ -237,6 +241,19 @@ controllers.controller('AdminDemandController', function (
             $scope.$modalInstance.dismiss('cancel');
         };
     };
+
+    $scope.SubmitNewDemand = function (input) {
+        var material_select = [];
+        angular.forEach($scope.content, function (item) {
+            if (item.selected) {
+                if (item.qty != undefined) {
+                    material_select.push({id: item.id, qty: item.qty});
+                }
+            }
+        })
+        var data = {title: input.title, reqdate: input.reqdate, material: material_select, notes : input.notes};
+        console.log(JSON.stringify(data));
+    }
 })
 
 
