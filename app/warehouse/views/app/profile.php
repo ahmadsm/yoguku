@@ -38,15 +38,18 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
-        <small>Control Panel</small>
+       Profile Yoguku
         <a href="<?php echo base_url('app/welcome'); ?>" class="btn btn-sm btn-flat bg-red pull-right">Back</a>
       </h1>
     </section>
 
     <!-- Main content -->
     <section class="content">
-
+        <ul>Alamat Kusuma Agrowisata Batu Malang</ul>
+        <ul>Jl.Abdul Gani Atas Po.BOX 36</ul>
+        <ul>Kota Wisata Batu – Indonesia</ul>
+        <ul>Phone 0341 593333</ul>
+        <ul>Fax: 0341 593196</ul>
       <!-- data here -->
 
     </section>

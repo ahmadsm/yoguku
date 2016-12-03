@@ -61,6 +61,7 @@
                 <th style="vertical-align: middle;">Nama Material</th>
                 <th style="vertical-align: middle;">Satuan</th>
                 <th style="vertical-align: middle;">Total</th>
+                <th style="vertical-align: middle;">Status</th>
                 <th style="vertical-align: middle;">Kelola</th>
               </tr>
             </thead>
@@ -72,6 +73,7 @@
                 <td style="vertical-align: middle;"><?php echo $key['nama']; ?></td>
                 <td style="vertical-align: middle;"><?php echo $key['satuan']; ?></td>
                 <td style="vertical-align: middle;"><?php echo $key['total']; ?></td>
+                <td style="vertical-align: middle;"><?php echo $key['status']; ?></td>
                 <td style="vertical-align: middle;">
                   <a href="<?php echo base_url('material/edit/'.$key['id']); ?>" class="btn btn-flat bg-aqua btn-sm"><i class="fa fa-gear"></i></a>
                   <a href="<?php echo base_url('material/delete/'.$key['id']); ?>" class="btn btn-flat bg-red btn-sm"><i class="fa fa-trash"></i></a>

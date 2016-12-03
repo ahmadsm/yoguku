@@ -10,7 +10,7 @@
           <img src="<?php echo base_url(); ?>component/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p>Admin</p>
           <!-- Status -->
           <a href="javascript:void(0);"><i class="fa fa-circle text-success"></i> Online</a>
         </div>

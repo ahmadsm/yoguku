@@ -35,6 +35,14 @@ class MaterialController extends CI_Controller {
 			$arr['satuan'] = $key->satuan;
 			$arr['total'] = $key->total;
 			array_push($arrdata, $arr);
+
+			if ($key->total < 10) {
+				$arr['status'] = "min";
+			}
+			else{
+				$arr['status'] = "cukup";	
+			}
+			array_push($arrdata, $arr);
 		}
 
 		return $arrdata;

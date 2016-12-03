@@ -17,4 +17,10 @@ class MaterialRest extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	function getDetail(){
+		$id = $this->uri->segment(3);	
+		$data = json_decode($this->curl->simple_post($this->warehouse.'/MaterialRest/getDetail/'.$id));
+		echo json_encode($data);
+	}
+
 }

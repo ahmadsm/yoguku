@@ -55,3 +55,4 @@ $route['translate_uri_dashes'] = FALSE;
 
 // API
 $route['material/data'] = 'MaterialRest/data';
+$route['material/data/(:num)'] = 'MaterialRest/getDetail/$1';

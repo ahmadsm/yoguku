@@ -57,6 +57,7 @@
               <tr>
                 <th style="vertical-align: middle;">No</th>
                 <th style="vertical-align: middle;">Nama</th>
+                <th style="vertical-align: middle;">Alamat</th>
                 <th style="vertical-align: middle;">Telepon</th>
                 <th style="vertical-align: middle;">Kelola</th>
               </tr>
@@ -66,6 +67,7 @@
               <tr>
                 <td style="vertical-align: middle;"><?php echo $no; ?></td>
                 <td style="vertical-align: middle;"><?php echo $key['nama']; ?></td>
+                <td style="vertical-align: middle;"><?php echo $key['alamat']; ?></td>
                 <td style="vertical-align: middle;"><?php echo $key['telepon']; ?></td>
                 <td style="vertical-align: middle;">
                   <a href="<?php echo base_url('supplier/edit/'.$key['id']); ?>" class="btn btn-flat bg-aqua btn-sm"><i class="fa fa-gear"></i></a>
