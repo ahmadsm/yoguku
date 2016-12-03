@@ -1,8 +1,8 @@
 <?php
 
 $host = 'localhost';
-$user = 'root';
-$pass = 'mysql';
+$user = 'admin';
+$pass = 'admin';
 $db = 'yoguku_production';
 $con = mysqli_connect($host, $user, $pass, $db) or die(mysqli_error($con));
 
@@ -25,10 +25,8 @@ if ($_GET['action'] == 'all') {
     }
     echo json_encode($output);
 }
-if ($_GET['action'] == 'add') {
-    $data = json_decode(file_get_contents("php://input"));
-    $nama = $data->nama;
-    $kota = $data->kota;
+if ($_GET['action'] == 'new_demand') {
+    
     $sql = "INSERT INTO user VALUES('','$nama','$kota')";
     $query = mysqli_query($con, $sql);
     if ($query) {

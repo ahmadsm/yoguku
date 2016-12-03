@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.6.1
+-- version 4.2.7.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: 01 Des 2016 pada 01.55
--- Versi Server: 5.6.24
--- PHP Version: 5.3.29
+-- Host: 127.0.0.1
+-- Generation Time: 03 Des 2016 pada 17.39
+-- Versi Server: 5.6.20
+-- PHP Version: 5.5.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -44,33 +44,8 @@ INSERT INTO `token` (`id`, `username`, `token`, `created_at`, `expired_at`) VALU
 (0, 'admin', 'rqNbIqiP0c', '2016-12-01 00:32:46', '2016-12-02 00:32:46'),
 (0, 'admin', 'qPvaObpgq1', '2016-12-01 00:35:54', '2016-12-02 00:35:54'),
 (0, 'admin', 'bBETSuVceg', '2016-12-01 08:18:55', '2016-12-02 08:18:55'),
-(0, 'admin', 'vaptDL7UQn', '2016-12-01 08:28:22', '2016-12-02 08:28:22');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `transaction_demand`
---
-
-CREATE TABLE IF NOT EXISTS `transaction_demand` (
-  `id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `transaction_demand_item`
---
-
-CREATE TABLE IF NOT EXISTS `transaction_demand_item` (
-  `id` int(11) NOT NULL,
-  `id_transaction_demand` int(11) NOT NULL,
-  `id_material` int(11) NOT NULL,
-  `qty_request` int(11) NOT NULL,
-  `status` enum('N','A','R') NOT NULL,
-  `created_date` date NOT NULL,
-  `update_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(0, 'admin', 'vaptDL7UQn', '2016-12-01 08:28:22', '2016-12-02 08:28:22'),
+(0, 'admin', 'LgSeuL7Cvp', '2016-12-03 22:36:45', '2016-12-04 22:36:45');
 
 -- --------------------------------------------------------
 
@@ -79,12 +54,12 @@ CREATE TABLE IF NOT EXISTS `transaction_demand_item` (
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(11) NOT NULL,
+`id` int(11) NOT NULL,
   `username` varchar(100) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data untuk tabel `user`
@@ -98,42 +73,20 @@ INSERT INTO `user` (`id`, `username`, `password`, `created_at`, `updated_at`) VA
 --
 
 --
--- Indexes for table `transaction_demand`
---
-ALTER TABLE `transaction_demand`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `transaction_demand_item`
---
-ALTER TABLE `transaction_demand_item`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `transaction_demand`
---
-ALTER TABLE `transaction_demand`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `transaction_demand_item`
---
-ALTER TABLE `transaction_demand_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

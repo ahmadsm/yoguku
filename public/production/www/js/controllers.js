@@ -251,8 +251,14 @@ controllers.controller('AdminDemandController', function (
                 }
             }
         })
-        var data = {title: input.title, reqdate: input.reqdate, material: material_select, notes : input.notes};
-        console.log(JSON.stringify(data));
+        
+        var data = {title: input.title, reqdate: input.reqdate, material: material_select, notes: input.notes};
+        AdminFactory.PostNewDemand(data).success(function (response) {
+            if (response.status == "OK") {
+                $scope.$modalInstance.dismiss();
+                toastr.success(response.message);
+            }
+        })
     }
 })
 

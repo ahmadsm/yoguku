@@ -42,11 +42,14 @@ factories.factory('AdminFactory', function ($http, api, api_center, $localStorag
     data.GetDataContent = function (datas) {
         return $http.get(api + 'admin/content', getToken());
     }
-    
+
     data.GetDataMaterial = function (datas) {
         return $http.get(api_center + '/material/data');
     }
 
+    data.PostNewDemand = function (datas, target) {
+        return $http.post(api_center + '/demand/new_demand', datas);
+    };
     data.GetDataContentSeq = function (datas) {
         return $http.get(api + 'admin/content/view/' + datas, getToken());
     }
