@@ -55,4 +55,5 @@ $route['translate_uri_dashes'] = FALSE;
 
 // API
 $route['material/data'] = 'MaterialRest/data';
-$route['demand/new_demand'] = 'DemandRest/new_demand';
+$route['demand/add'] = 'DemandRest/new_demand';
+$route['demand/data'] = 'DemandRest/show_demand';

@@ -55,8 +55,7 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th style="vertical-align: middle;">No</th>
-                <th style="vertical-align: middle;">Supplier</th>
+                <th style="vertical-align: middle;">No</th>                
                 <th style="vertical-align: middle;">Material</th>
                 <th style="vertical-align: middle;">Jumlah</th>
                 <th style="vertical-align: middle;">Kelola</th>
@@ -65,8 +64,7 @@
             <tbody>
               <?php $no=1;foreach ($demand as $key): ?>
               <tr>
-                <td style="vertical-align: middle;"><?php echo $no; ?></td>
-                <td style="vertical-align: middle;"><?php echo $key['supplier']; ?></td>
+                <td style="vertical-align: middle;"><?php echo $no; ?></td>                
                 <td style="vertical-align: middle;"><?php echo $key['material']; ?></td>
                 <td style="vertical-align: middle;"><?php echo $key['qty']; ?></td>
                 <td style="vertical-align: middle;">

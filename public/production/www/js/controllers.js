@@ -208,14 +208,45 @@ controllers.controller('AdminMaterialController', function (
 })
 
 controllers.controller('AdminDemandController', function (
-        $scope, $localStorage, $state, $stateParams, $modal, $rootScope, md5,
+        $scope, $filter, $localStorage, $state, $stateParams, $modal, $rootScope, md5,
         jwtHelper, AdminFactory, AdminTokenService, toastr, fileUpload, Upload) {
 
-    AdminFactory.GetDataMaterial().success(function (response) {
-        if (response != "") {
-            $scope.content = response;
-        }
-    })
+    function getdatamaterial() {
+        AdminFactory.GetDataMaterial().success(function (response) {
+            if (response != "") {
+                $scope.materials = response;
+            }
+        })
+    }
+
+    function getdatademand() {
+        AdminFactory.GetDataDemand().success(function (response) {
+            if (response != "") {
+                $scope.demands = response;
+            }
+        });
+    }
+    ;
+
+
+    $scope.modalmaterial = function (id) {
+        var filterDemand = $filter('filter')($scope.demands, id);
+        $scope.demands_detail = filterDemand[0];
+        $scope.$modalInstance = $modal.open({
+            scope: $scope
+            , animation: true
+            , ariaLabelledBy: 'modal-title'
+            , ariaDescribedBy: 'modal-body'
+            , templateUrl: 'modal-detail-material.html'
+            , controller: 'AdminDemandController'
+            , size: 'lg'
+        })
+        $scope.cancel = function () {
+            $scope.$modalInstance.dismiss('cancel');
+        };
+    };
+
+    getdatademand();
 
     $scope.material_select = [];
 
@@ -224,10 +255,10 @@ controllers.controller('AdminDemandController', function (
         $scope.material_select.push(data);
         var material = $scope.material_select;
         console.log(JSON.stringify(material));
-
     }
 
     $scope.NewRequestDemandModal = function () {
+        getdatamaterial();
         $scope.$modalInstance = $modal.open({
             scope: $scope
             , animation: true
@@ -244,14 +275,14 @@ controllers.controller('AdminDemandController', function (
 
     $scope.SubmitNewDemand = function (input) {
         var material_select = [];
-        angular.forEach($scope.content, function (item) {
+        angular.forEach($scope.materials, function (item) {
             if (item.selected) {
                 if (item.qty != undefined) {
                     material_select.push({id: item.id, qty: item.qty});
                 }
             }
         })
-        
+
         var data = {title: input.title, reqdate: input.reqdate, material: material_select, notes: input.notes};
         AdminFactory.PostNewDemand(data).success(function (response) {
             if (response.status == "OK") {

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 03 Des 2016 pada 17.39
+-- Generation Time: 04 Des 2016 pada 17.00
 -- Versi Server: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -30,19 +30,22 @@ CREATE TABLE IF NOT EXISTS `demand` (
 `id` int(11) NOT NULL,
   `code_transaction_demand` varchar(7) NOT NULL,
   `fk_material` varchar(50) DEFAULT NULL,
-  `fk_supplier` varchar(50) DEFAULT NULL,
   `qty` int(11) DEFAULT '0',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data untuk tabel `demand`
 --
 
-INSERT INTO `demand` (`id`, `code_transaction_demand`, `fk_material`, `fk_supplier`, `qty`, `created_at`, `updated_at`) VALUES
-(9, 'RFTAUE', '1', NULL, 11, '2016-12-03 16:29:32', '2016-12-03 16:29:32'),
-(10, 'PVKAYB', '1', NULL, 10, '2016-12-03 16:36:27', '2016-12-03 16:36:27');
+INSERT INTO `demand` (`id`, `code_transaction_demand`, `fk_material`, `qty`, `created_at`, `updated_at`) VALUES
+(9, 'RFTAUE', '1', 11, '2016-12-03 16:29:32', '2016-12-04 05:56:25'),
+(10, 'PVKAYB', '1', 10, '2016-12-03 16:36:27', '2016-12-04 05:56:28'),
+(11, 'PVKAYB', '2', 10, '2016-12-03 16:36:27', '2016-12-04 05:56:31'),
+(12, 'EWZPMA', '1', 1, '2016-12-04 09:58:41', '2016-12-04 09:58:41'),
+(13, 'EWZPMA', '2', 1, '2016-12-04 09:58:41', '2016-12-04 09:58:41'),
+(14, 'EWZPMA', '3', 1, '2016-12-04 09:58:41', '2016-12-04 09:58:41');
 
 -- --------------------------------------------------------
 
@@ -65,9 +68,9 @@ CREATE TABLE IF NOT EXISTS `material` (
 --
 
 INSERT INTO `material` (`id`, `kode`, `nama`, `satuan`, `total`, `created_at`, `updated_at`) VALUES
-(1, 'MLK', 'Susu Bubuk', 'Liter', '4', '2016-11-27 23:00:59', '2016-12-03 16:37:10'),
-(2, 'SKM', 'Skim', 'Kilogram', '31', '2016-11-27 23:09:40', '2016-12-03 16:30:16'),
-(3, 'SGR', 'Gula Pasir', 'Kilogram', '50', '2016-11-28 00:40:43', '2016-12-03 16:30:16');
+(1, 'MLK', 'Susu Bubuk', 'Liter', '3', '2016-11-27 23:00:59', '2016-12-04 10:04:52'),
+(2, 'SKM', 'Skim', 'Kilogram', '20', '2016-11-27 23:09:40', '2016-12-04 10:04:52'),
+(3, 'SGR', 'Gula Pasir', 'Kilogram', '49', '2016-11-28 00:40:43', '2016-12-04 10:04:52');
 
 -- --------------------------------------------------------
 
@@ -89,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `supplier` (
 --
 
 INSERT INTO `supplier` (`id`, `nama`, `alamat`, `telepon`, `created_at`, `updated_at`) VALUES
-(3, 'PT. Susu Bubuk', 'Jalan rasa susu', '+12300', '2016-11-28 00:56:49', '2016-11-28 00:56:49'),
+(1, 'PT. Susu Bubuk', 'Jalan rasa susu', '+12300', '2016-11-28 00:56:49', '2016-12-04 06:17:20'),
 (4, 'PT. Asam Manis', 'Jalan asam jawa', '+12345', '2016-11-28 02:31:14', '2016-11-28 02:31:14');
 
 -- --------------------------------------------------------
@@ -133,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `transaction_demand` (
   `request_date` varchar(15) NOT NULL,
   `created_date` date NOT NULL,
   `update_date` date NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
 
 --
 -- Dumping data untuk tabel `transaction_demand`
@@ -141,7 +144,8 @@ CREATE TABLE IF NOT EXISTS `transaction_demand` (
 
 INSERT INTO `transaction_demand` (`id`, `code`, `title`, `notes`, `status`, `request_date`, `created_date`, `update_date`) VALUES
 (17, 'RFTAUE', 'Request', 'ahahahahahah', 'N', '2016/08/09', '2016-12-03', '0000-00-00'),
-(18, 'PVKAYB', 'Coba', 'Coba', 'N', '2016/07/08', '2016-12-03', '0000-00-00');
+(18, 'PVKAYB', 'Coba', 'Coba', 'N', '2016/07/08', '2016-12-03', '0000-00-00'),
+(27, 'EWZPMA', 'wmwmwmwmwm', 'jangan kelamaan', 'N', '2016/07/09', '2016-12-04', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -212,7 +216,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `demand`
 --
 ALTER TABLE `demand`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `material`
 --
@@ -232,7 +236,7 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 -- AUTO_INCREMENT for table `transaction_demand`
 --
 ALTER TABLE `transaction_demand`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `user`
 --

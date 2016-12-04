@@ -90,3 +90,5 @@ $route['demand/show'] = 'DemandController/show';
 $route['demand/update'] = 'DemandController/update';
 $route['demand/delete/(:num)'] = 'DemandController/delete/$1';
 $route['demand/edit/(:num)'] = 'DemandController/edit/$1';
+$route['demand/transactions'] = 'DemandController/transaction_demand';
+$route['demand/transaction_status'] = 'DemandController/transaction_change_status';
