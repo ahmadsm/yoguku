@@ -41,13 +41,17 @@ class DemandController extends CI_Controller {
         $this->load->view('demand/transactions', $content);
     }
 
-    function transaction_change_status(){
-        $input = $this->input->post();
-        $id = $input->id;
-        $new_status = $input->status;
-        
+    function transaction_change_status() {        
+        $id = $this->input->post('id');
+        $new_status = $this->input->post('status');
+        $update = $this->db->set('status', $new_status)->where('id', $id)->update('transaction_demand');
+        if ($update) {
+            return 'OK';
+        } else {
+            return 'FALSE';
+        }
     }
-    
+
     function DataSupply() {
         $arrdata = array();
         $res = $this->db->select('d.id, m.nama as nama_material, d.qty as qty')
