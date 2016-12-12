@@ -14,33 +14,42 @@ class MaterialController extends CI_Controller {
     }
 
     function sync() {
-        $query = "select supply.fk_material, SUM(supply.qty) as total from supply GROUP BY supply.fk_material";
-        $res = $this->db->query($query);
-        foreach ($res->result() as $key) {
-            $total_out = $this->db->query("SELECT demand.fk_material, sum(demand.qty) as total_out from demand where demand.fk_material='$key->fk_material'")->row()->total_out;
-            $total_in = $key->total;
-            $total = $total_in - $total_out;
-            $this->db->update('material', array('total' => $total), array('id' => $key->fk_material));
-        }
+        $query = $this->db->select('id')->from('material');
+        $get = $query->get();
+        $data = $get->result();
+        foreach ($get->result() as $each) {
+            $total_in_sum = $this->db->select_sum('qty')->from('supply')->where('fk_material', $each->id);
+            $total_in_get = $total_in_sum->get();
+            $in = $total_in_get->row();
+            $total_out_sum = $this->db->select_sum('qty')->from('demand as d')->join('transaction_demand as td', 'd.code_transaction_demand = td.code')->where('d.fk_material', $each->id)->where('td.status = "A"');
+            $total_out_get = $total_out_sum->get();
+            $out = $total_out_get->row();
+            $total_now = (int)$in->qty - (int)$out->qty;
+            $update[] = $this->db->update('material', array('total' => $total_now), array('id' => $each->id));
+        }        
         redirect('material/index');
     }
 
     function DataMaterial() {
         $res = $this->db->get('material');
-        foreach ($res->result() as $key) {
-            if ($key->total < 10) {
-                $status = "min";
-            } else {
-                $status = "cukup";
+        $arrdata = [];
+        if ($res != "") {
+            foreach ($res->result() as $key) {
+                if ($key->total < 10) {
+                    $status = "Kurang";
+                } else {
+                    $status = "Cukup";
+                }
+                $arrdata[] = array(
+                    "id" => $key->id,
+                    "kode" => $key->kode,
+                    "nama" => $key->nama,
+                    "satuan" => $key->satuan,
+                    "total" => $key->total,
+                    "status" => $status,
+                    "last_update" => $key->updated_at,
+                );
             }
-            $arrdata[] = array(
-                "id" => $key->id,
-                "kode" => $key->kode,
-                "nama" => $key->nama,
-                "satuan" => $key->satuan,
-                "total" => $key->total,
-                "status" => $status,
-            );
         }
 
         return $arrdata;

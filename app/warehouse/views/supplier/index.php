@@ -26,7 +26,7 @@
   <![endif]-->
 </head>
 
-<body class="hold-transition skin-blue sidebar-collapse">
+<body class="hold-transition skin-blue">
 <div class="wrapper">
 
   <?php $this->load->view('app/header'); ?>
@@ -56,10 +56,10 @@
             <thead>
               <tr>
                 <th style="vertical-align: middle;">No</th>
-                <th style="vertical-align: middle;">Nama</th>
-                <th style="vertical-align: middle;">Alamat</th>
-                <th style="vertical-align: middle;">Telepon</th>
-                <th style="vertical-align: middle;">Kelola</th>
+                <th style="vertical-align: middle;">Name</th>
+                <th style="vertical-align: middle;">Addres</th>
+                <th style="vertical-align: middle;">Phone</th>
+                <th style="vertical-align: middle;">Action</th>
               </tr>
             </thead>
             <tbody>

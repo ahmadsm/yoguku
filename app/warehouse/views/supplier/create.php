@@ -26,7 +26,7 @@
   <![endif]-->
 </head>
 
-<body class="hold-transition skin-blue sidebar-collapse">
+<body class="hold-transition skin-blue">
 <div class="wrapper">
 
   <?php $this->load->view('app/header'); ?>

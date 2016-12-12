@@ -41,7 +41,7 @@ class DemandController extends CI_Controller {
         $this->load->view('demand/transactions', $content);
     }
 
-    function transaction_change_status() {        
+    function transaction_change_status() {
         $id = $this->input->post('id');
         $new_status = $this->input->post('status');
         $update = $this->db->set('status', $new_status)->where('id', $id)->update('transaction_demand');
@@ -54,9 +54,11 @@ class DemandController extends CI_Controller {
 
     function DataSupply() {
         $arrdata = array();
-        $res = $this->db->select('d.id, m.nama as nama_material, d.qty as qty')
+        $res = $this->db->select('d.id, d.code_transaction_demand  as transaction_code ,m.nama as nama_material, d.qty as qty,
+                td.status as transaction_status, td.created_date as transaction_date, td.update_date as transaction_update_date')
                 ->from('demand as d')
-                ->join('material as m', 'd.fk_material = m.id');
+                ->join('material as m', 'd.fk_material = m.id')
+                ->join('transaction_demand as td', 'd.code_transaction_demand = td.code');
         $query = $res->get();
         $result = $query->result();
         foreach ($result as $key) {
@@ -64,6 +66,10 @@ class DemandController extends CI_Controller {
                 "id" => $key->id,
                 "material" => $key->nama_material,
                 "qty" => $key->qty,
+                "transaction_code" => $key->transaction_code,
+                "transaction_status" => $key->transaction_status,
+                "transaction_date" => $key->transaction_date,
+                "transaction_update_date" => $key->transaction_update_date
             );
         }
         return $record;
