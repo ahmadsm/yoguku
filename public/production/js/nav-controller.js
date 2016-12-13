@@ -43,11 +43,11 @@ navControllers.controller('FrontNavController', function ($scope, $state) {
 
 
 navControllers.controller('AdminNavController', function ($scope, $state) {
-    $scope.title = 'Administrator';
+    $scope.title = 'Production - Administrator';
     $scope.isUrl = function (url) {
         if (url === '#')
             return false;
-        return ('#' + $state.$current.url.source + '/').indexOf(url + '/') === 0;
+        return ('#' + $state.$current.url.source + '/dashboard').indexOf(url + '/dashboard') === 0;
     };
 
     $scope.pages = [

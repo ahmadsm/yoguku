@@ -290,6 +290,7 @@ controllers.controller('AdminDemandController', function (
                 toastr.success(response.message);
             }
         })
+        getdatademand();
     }
 })
 

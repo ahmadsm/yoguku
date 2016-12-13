@@ -59,7 +59,7 @@
                                         <th style="vertical-align: middle;">Code</th>
                                         <th style="vertical-align: middle;">Title</th>
                                         <th style="vertical-align: middle;">Materials</th>
-                                        <th style="vertical-align: middle;">Created Date</th>
+                                        <th style="vertical-align: middle;">Request Date</th>
                                         <th style="vertical-align: middle;">Updated Date</th>
                                         <th style="vertical-align: middle;">Status</th>
                                         <th style="vertical-align: middle;">Action</th>
@@ -178,7 +178,7 @@
         <script src="<?php echo base_url(); ?>component/dist/js/app.min.js"></script>
         <script>
                                                                 function changestatus(id, status) {
-                                                                    var confirm_dialog = confirm('Apakah anda yakin ?');
+                                                                    var confirm_dialog = confirm('Are you sure ?');
                                                                     if (confirm_dialog) {
                                                                         var data = {id: id, status: status};
                                                                         $.ajax({
@@ -186,7 +186,7 @@
                                                                             url: '<?php echo base_url() . '/demand/transaction_status' ?>',
                                                                             data: data,
                                                                             success: function () {
-                                                                                alert('Sukses');
+                                                                                alert('Success');
                                                                                 location.reload();
                                                                             },
                                                                         });

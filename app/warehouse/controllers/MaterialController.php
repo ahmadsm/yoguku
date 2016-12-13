@@ -18,15 +18,18 @@ class MaterialController extends CI_Controller {
         $get = $query->get();
         $data = $get->result();
         foreach ($get->result() as $each) {
-            $total_in_sum = $this->db->select_sum('qty')->from('supply')->where('fk_material', $each->id);
+            $total_in_sum = $this->db->select_sum('qty')->from('supply')
+                            ->where('fk_material', $each->id);
             $total_in_get = $total_in_sum->get();
             $in = $total_in_get->row();
-            $total_out_sum = $this->db->select_sum('qty')->from('demand as d')->join('transaction_demand as td', 'd.code_transaction_demand = td.code')->where('d.fk_material', $each->id)->where('td.status = "A"');
+            $total_out_sum = $this->db->select_sum('qty')->from('demand as d')
+                            ->join('transaction_demand as td', 'd.code_transaction_demand = td.code')
+                            ->where('d.fk_material', $each->id)->where('td.status = "A"');
             $total_out_get = $total_out_sum->get();
             $out = $total_out_get->row();
-            $total_now = (int)$in->qty - (int)$out->qty;
+            $total_now = (int) $in->qty - (int) $out->qty;
             $update[] = $this->db->update('material', array('total' => $total_now), array('id' => $each->id));
-        }        
+        }
         redirect('material/index');
     }
 
