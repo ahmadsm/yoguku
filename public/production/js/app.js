@@ -42,6 +42,12 @@ apps.config(function ($stateProvider, $urlRouterProvider, $controllerProvider) {
                 , controller: 'AdminNavController'
             })
 
+            .state('admin.logout', {
+                url: '/logout'
+                , controller: 'AdminController'
+                , templateUrl: viewsPrefix + "/admin/logout.html"
+            })
+
             .state('admin.dashboard', {
                 url: '/dashboard'
                 , templateUrl: viewsPrefix + "/admin/dashboard.html"
@@ -53,25 +59,19 @@ apps.config(function ($stateProvider, $urlRouterProvider, $controllerProvider) {
                 , templateUrl: viewsPrefix + "/admin/material.html"
                 , controller: 'AdminMaterialController'
                 , })
-            
+
             .state('admin.demand', {
                 url: '/demand'
                 , templateUrl: viewsPrefix + "/admin/demand.html"
                 , controller: 'AdminDemandController'
                 , })
-            .state('admin.edit_data', {
-                url: '/edit/:contentEditSeq'
-                , templateUrl: viewsPrefix + "/admin/display-content.html"
-                , controller: 'AdminController'
+
+            .state('admin.api_access', {
+                url: '/api_access'
+                , templateUrl: viewsPrefix + "/admin/api_access.html"
+                , controller: 'AdminApiAccessController'
                 , })
 
-
-
-            .state('admin.view_data', {
-                url: '/view/:contentViewSeq'
-                , templateUrl: viewsPrefix + "/admin/display-content.html"
-                , controller: 'AdminController'
-                , })
 
     $urlRouterProvider.otherwise("/front/home")
 })
@@ -86,7 +86,6 @@ apps.config(function ($stateProvider, $urlRouterProvider, $controllerProvider) {
                                 element.text(title);
                             }, 0, false);
                         };
-
                         $rootScope.$on('$stateChangeSuccess', listener);
                     }
                 };

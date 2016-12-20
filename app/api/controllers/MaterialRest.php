@@ -1,18 +1,19 @@
 <?php
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class MaterialRest extends CI_Controller {
+include 'rest.php';
 
-	var $warehouse = "";
+class MaterialRest extends rest {
+    
+    function __construct() {
+        parent::__construct();       
+       
+    }
 
-	function __construct() {
-		parent::__construct();
-		$this->load->library('curl');
-	}
-
-	function data() {		
-		$data = json_decode($this->curl->simple_get(WAREHOUSE.'/MaterialRest/data'));
-		echo json_encode($data);
-	}
+    public function data() {                
+        $data = json_decode($this->curl->simple_get(WAREHOUSE . '/materialrest/data'));
+        echo json_encode($data);
+    }
 
 }

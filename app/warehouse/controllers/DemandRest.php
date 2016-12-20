@@ -57,27 +57,30 @@ class DemandRest extends CI_Controller {
     }
 
     function data() {
-        $data = $this->db->get('transaction_demand');
+        $data = $this->db->get('transaction_demand');             
         foreach ($data->result() as $each) {
-            $getdetail = $this->db->select('m.nama as material_name ,m.satuan , d.qty as qty')
-                    ->from('demand as d')
-                    ->join('material as m', 'd.fk_material = m.id')
-                    ->where('d.code_transaction_demand', $each->code);
-            $query = $getdetail->get();
-            $result = $query->result();
-            $record[] = array(
-                "id" => $each->id,
-                "code" => $each->code,
-                "title" => $each->title,
-                "notes" => $each->notes,
-                "status" => $each->status,
-                "materials_count" => count($query->result()),
-                "materials_detail" => $result,
-                "request_date" => $each->request_date,
-                "update_date" => $each->update_date
-            );
+            if ($each != "") {
+                $getdetail = $this->db->select('m.nama as material_name ,m.satuan , d.qty as qty')
+                        ->from('demand as d')
+                        ->join('material as m', 'd.fk_material = m.id')
+                        ->where('d.code_transaction_demand', $each->code);
+                $query = $getdetail->get();
+                $result = $query->result();
+                $record[] = array(
+                    "id" => $each->id,
+                    "code" => $each->code,
+                    "title" => $each->title,
+                    "notes" => $each->notes,
+                    "status" => $each->status,
+                    "materials_count" => count($query->result()),
+                    "materials_detail" => $result,
+                    "request_date" => $each->request_date,
+                    "update_date" => $each->update_date
+                );
+            } else {
+                $record = get_not_found();
+            }            
         }
-
         echo json_encode($record);
     }
 

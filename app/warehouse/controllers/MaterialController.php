@@ -28,8 +28,8 @@ class MaterialController extends CI_Controller {
             $total_out_get = $total_out_sum->get();
             $out = $total_out_get->row();
             $total_now = (int) $in->qty - (int) $out->qty;
-            $update[] = $this->db->update('material', array('total' => $total_now), array('id' => $each->id));
-        }
+            $update = $this->db->update('material', array('total' => $total_now), array('id' => $each->id));
+        }        
         redirect('material/index');
     }
 

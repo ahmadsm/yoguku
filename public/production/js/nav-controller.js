@@ -11,34 +11,6 @@ navControllers.controller('FrontNavController', function ($scope, $state) {
         return ('#' + $state.$current.url.source + '/').indexOf(url + '/') === 0;
     };
 
-    $scope.pages = [
-        {
-            name: 'Home'
-            , url: '#/front/home'
-        }, {
-            name: 'Tentang Kami'
-            , url: '#/front/about'
-        }, {
-            name: 'Contact'
-            , url: '#/contact'
-        }, {
-            name: 'Dropdown Example'
-            , url: '#'
-            , subPages: [
-                {
-                    name: 'About'
-                    , url: '#/about'
-                }
-                , {
-                    name: 'Header'
-                }
-                , {
-                    name: 'Contact'
-                    , url: '#/contact'
-                }
-            ]
-        }
-    ]
 });
 
 
@@ -59,18 +31,23 @@ navControllers.controller('AdminNavController', function ($scope, $state) {
             name: 'Demand'
             , url: 'admin.demand'
         }, {
-            name: 'Profile'
+            name: 'Account'
             , url: '#'
             , subPages: [
                 {
-                    name: 'Detail'
-                    , url: '#/admin/profile'
+                    name: 'API Access'
+                    , url: 'admin.api_access'
                 },
                 {
-                    name: 'Logout'
-                    , url: '#/admin/logout'
+                    name: 'User Login'
+                    , url: 'admin.user_data'
                 }
+                
             ]
-        }
+        }, {
+            name: 'Logout'
+            , url: 'admin.logout'            
+        },
     ]
+
 });

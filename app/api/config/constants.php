@@ -86,3 +86,19 @@ defined('EXIT__AUTO_MIN') OR define('EXIT__AUTO_MIN', 9); // lowest automaticall
 defined('EXIT__AUTO_MAX') OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 define('WAREHOUSE', 'http://localhost/restapi/public/warehouse');
+define('SECRETKEY', 'server123354');
+define('JWT_ALGHORITMA', 'HS256');
+
+define('FAIL_STATUS', "FAIL");
+define('FAIL_MESSAGE', "Failed process");
+define('FAIL_UPLOAD_MESSAGE', "Proses Upload Gagal");
+define('FAIL_AUTH', "Authentication error");
+define('OK_STATUS', "OK");
+define('OK_MESSAGE', "Success process");
+define('OK_UPLOAD_MESSAGE', "Proses Upload Berhasil");
+define('NO_DATA_STATUS', "NONE");
+define('NO_DATA_MESSAGE', "No data");
+define('EMPTY_POST_STATUS', "NONE");
+define('EMPTY_POST_MESSAGE', "Empty data");
+
+

@@ -1,19 +1,19 @@
 var services = angular.module('app.services', []);
 
-services.service('AdminTokenService', function ($localStorage, $state, TokenFactory, toastr) {
+services.service('AdminTokenService', function ($localStorage, $state, AdminFactory, toastr) {
     this.checkToken = function () {
-        token = JSON.stringify($localStorage.akhlakq_token);
-        if (token == null) {
+        var token = JSON.stringify($localStorage.token);
+//        console.log(token);
+        if (token == undefined)
+        {
             console.log("No token");
             $state.go('front.loginadmin');
-            toastr.warning("Tidak diizinkan");
+            toastr.warning("Not permitted");
         } else {
-            var text = $localStorage.akhlakq_token.token;
-            var encode = text.trim(text);
-            TokenFactory.AdminCheckToken(encode).success(function (response) {
-//                console.log(JSON.stringify(response));
+            AdminFactory.checkProductionToken().success(function (response)
+            {                
                 if (response.response != "OK") {
-                    console.log(response.message);
+                    toastr.warning("Not permitted");
                     $state.go('front.loginadmin');
                 }
             }).error(function (response) {
@@ -24,12 +24,12 @@ services.service('AdminTokenService', function ($localStorage, $state, TokenFact
     };
 });
 
-services.service('fileUpload', function (AdminFactory) {
-
-    this.uploadFileToUrl = function (file) {
-        var fd = new FormData();
-        fd.append('file', file);        
-       
-        return AdminFactory.uploadFile(fd);
-    }
-});
+//services.service('fileUpload', function (AdminFactory) {
+//
+//    this.uploadFileToUrl = function (file) {
+//        var fd = new FormData();
+//        fd.append('file', file);        
+//       
+//        return AdminFactory.uploadFile(fd);
+//    }
+//});
